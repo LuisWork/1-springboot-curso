@@ -1,6 +1,9 @@
 package com.luis.curso.springboot.webapp.springboot_web.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,27 @@ import com.luis.curso.springboot.webapp.springboot_web.models.dto.UserDtoCustom2
 public class UserRestController {
 
     //@RequestMapping(path="/details-rest", method =  RequestMethod.GET)
+
+    @GetMapping("/list-users")
+    public List<User> list() {
+        User user = new User("Luis", "Zambrano");
+        User pepe = new User("Pepe", "Pepo");
+        User john = new User("John", "Doe");
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        users.add(pepe);
+        users.add(john);
+        return users;
+    }
+
+    @GetMapping("/list-users-helper")
+    public List<User> listHelper() {
+        User user = new User("Luis", "Zambrano");
+        User pepe = new User("Pepe", "Pepo");
+        User john = new User("John", "Doe");
+        List<User> users = Arrays.asList(user, pepe, john);
+        return users;
+    }
 
     @GetMapping("/details-rest")
     public Map<String, Object> detailsModel() {
