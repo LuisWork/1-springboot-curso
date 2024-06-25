@@ -37,6 +37,14 @@ public class UserController {
         return "details-entity";
     }
 
-    
+    @GetMapping("/details-conditional")
+    public String detailsConditional(Model model) {
+        model.addAttribute("title", "Hello World Spring Boot");
+        model.addAttribute("subtitle", "Pasando datos a la vista con Model");
+        model.addAttribute("name", "Luis");
+        model.addAttribute("lastname", "Zambrano");
+        model.addAttribute("email", "luis.correo.com");
+        return "details-if-conditional";
+    }
 
 }
