@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.luis.curso.springboot.webapp.springboot_web.models.User;
+
 @Controller
 public class UserController {
 
@@ -25,6 +27,14 @@ public class UserController {
         model.put("name", "Luis");
         model.put("lastname", "Zambrano");
         return "details-map";
+    }
+
+    @GetMapping("/details-entity")
+    public String detailsEntity(Model model) {
+        User user = new User("Luis", "Zambrano");
+        model.addAttribute("title", "Pasando un objeto a la vista Thymeleaf");
+        model.addAttribute("user", user);
+        return "details-entity";
     }
 
     

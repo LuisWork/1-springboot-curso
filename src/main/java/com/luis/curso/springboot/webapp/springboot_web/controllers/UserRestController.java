@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luis.curso.springboot.webapp.springboot_web.models.User;
+
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
@@ -15,11 +17,10 @@ public class UserRestController {
 
     @GetMapping("/details-rest")
     public Map<String, Object> detailsModel() {
+        User user = new User("Luis", "Zambrano");
         Map<String, Object> body = new HashMap<>();
-        body.put("title", "Hello World Spring Boot");
-        body.put("subtitle", "Pasando datos al JSON para RESTController");
-        body.put("name", "Luis");
-        body.put("lastname", "Zambrano");
+        body.put("title", "Pasando objeto al JSON");
+        body.put("user", user);
         return body;
     }
 
