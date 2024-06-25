@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.luis.curso.springboot.webapp.springboot_web.models.User;
 import com.luis.curso.springboot.webapp.springboot_web.models.dto.UserDto;
+import com.luis.curso.springboot.webapp.springboot_web.models.dto.UserDtoCustom;
+import com.luis.curso.springboot.webapp.springboot_web.models.dto.UserDtoCustom2;
 
 @RestController
 @RequestMapping("/api")
@@ -32,6 +34,23 @@ public class UserRestController {
         userDto.setUser(user);
         userDto.setTitle("Usando DTO para formatear datos del POJO");
         return userDto;
+    }
+
+    @GetMapping("/details-rest-dto-custom")
+    public UserDtoCustom detailsModelDtoCustom() {
+        UserDtoCustom userDtoCustom = new UserDtoCustom();
+        User user = new User("Luis", "Zambrano");
+        userDtoCustom.setUser(user.getName());
+        userDtoCustom.setLastname(user.getLastname());
+        return userDtoCustom;
+    }
+
+    @GetMapping("/details-rest-dto-custom-2")
+    public UserDtoCustom2 detailsModelDtoCustom2() {
+        UserDtoCustom2 userDtoCustom2 = new UserDtoCustom2();
+        User user = new User("Luis", "Zambrano");
+        userDtoCustom2.setFullname(user.getName().concat(" ").concat(user.getLastname()));
+        return userDtoCustom2;
     }
 
 
