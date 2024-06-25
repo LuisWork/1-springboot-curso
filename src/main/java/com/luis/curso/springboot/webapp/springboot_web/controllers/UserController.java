@@ -10,6 +10,8 @@ public class UserController {
     @GetMapping("/details")
     public String details(Model model) {
         model.addAttribute("title", "Hello World Spring Boot");
+        model.addAttribute("name", "Luis");
+        model.addAttribute("lastname", "Zambrano");
         return "details";
     }
 
