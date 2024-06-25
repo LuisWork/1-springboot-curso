@@ -1,9 +1,12 @@
 package com.luis.curso.springboot.webapp.springboot_web.controllers;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.luis.curso.springboot.webapp.springboot_web.models.User;
@@ -45,6 +48,18 @@ public class UserController {
         model.addAttribute("lastname", "Zambrano");
         model.addAttribute("email", "luis.correo.com");
         return "details-if-conditional";
+    }
+
+    @GetMapping("/list")
+    public String list(ModelMap model) {
+        List<User> users = Arrays.asList(
+            new User("Pepa", "Gonzales"),
+            new User("Lalo", "Perez", "lalo@correo.com"),
+            new User("Andres", "Doe", "andres@correo.com")
+            );
+        model.addAttribute("title", "Listado de usuarios");
+        model.addAttribute("users", users);
+        return "list";
     }
 
 }
